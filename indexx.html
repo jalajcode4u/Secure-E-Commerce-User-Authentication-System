@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dummy Flipkart - Firebase Test</title>
+
+  <!-- Firebase v8 SDKs (classic version that works with HTML directly) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+</head>
+<body>
+
+  <h2>Test Firebase Connection</h2>
+  <button onclick="addUser()">Add Dummy User</button>
+
+  <script>
+    // ✅ Replace with your Firebase project config
+    var firebaseConfig = {
+  apiKey: "AIzaSyCCDWFJe-eCA8DTmpqGEbrQozPLNPwyVPU",
+  authDomain: "dummy-flipkart-7c0d7.firebaseapp.com",
+  projectId: "dummy-flipkart-7c0d7",
+  storageBucket: "dummy-flipkart-7c0d7.firebasestorage.app",
+  messagingSenderId: "604922775276",
+  appId: "1:604922775276:web:917b826a8d3327418f07c9"
+};
+
+    // ✅ Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+    var db = firebase.firestore();
+
+    // ✅ Add user function
+    function addUser() {
+      db.collection("users").add({
+        name: "Jalaj Kumar",
+        email: "jalaj@email.com",
+        timestamp: new Date()
+      }).then(() => {
+        alert("User added to Firebase!");
+      }).catch((error) => {
+        console.error("Error adding document: ", error);
+      });
+    }
+  </script>
+</body>
+</html>
